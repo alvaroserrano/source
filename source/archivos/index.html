@@ -1,0 +1,19 @@
+---
+layout: page
+title: Anteriormente, en alvaroserrano.com...
+footer: false
+---
+
+<p>Esto es un archivo de todos los artículos y enlaces publicados en alvaroserrano.com.</p>
+<div id="blog-archives">
+{% for post in site.posts reverse %}
+{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+{% unless year == this_year %}
+  {% assign year = this_year %}
+  <h2>{{ year }}</h2>
+{% endunless %}
+<article>
+  {% include archive_post.html %}
+</article>
+{% endfor %}
+</div>
